@@ -36,7 +36,7 @@
 
 // GPIO that implement 1-bit memory with RC components which hold the
 // pin value long enough for double reset detection.
-// #define PIN_DOUBLE_RESET_RC
+#define PIN_DOUBLE_RESET_RC 13
 
 //--------------------------------------------------------------------+
 // LED
@@ -45,7 +45,7 @@
 // GPIO connected to Neopixel data
 // Note: On the production version Saola (v1.2) it is GPIO 18,
 // however on earlier revision v1.1 it is GPIO 17
-#define PIN_NEOPIXEL          18
+#define PIN_NEOPIXEL          17
 
 // Brightness percentage from 1 to 255
 #define NEOPIXEL_BRIGHTNESS   0x10
@@ -56,7 +56,7 @@
 
 // LED for indicator and writing flash
 // If not defined neopixel will be use for flash writing instead
-#define PIN_LED               33
+#define PIN_LED               36
 
 //--------------------------------------------------------------------+
 // USB UF2
