@@ -63,6 +63,6 @@
 #define UF2_PRODUCT_NAME  USB_MANUFACTURER " " USB_PRODUCT
 #define UF2_BOARD_ID      "microDev-microS2"
 #define UF2_VOLUME_LABEL  "MICROS2BOOT"
-#define UF2_INDEX_URL     "https://github.com/microDev1/microS2"
+#define UF2_INDEX_URL     "https://circuitpython.org/board/microdev_micro_s2"
 
 #endif //MICRODEV_MICROS2_H_
