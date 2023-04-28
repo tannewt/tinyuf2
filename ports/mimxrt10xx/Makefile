@@ -79,11 +79,17 @@ $(BUILD)/$(OUTNAME).hex: $(BUILD)/$(OUTNAME).elf
 
 # SDPHOST is a variable if you need to change the path
 SDPHOST = sdphost
+BLHOST = blhost
 
 flash-sdp: $(BUILD)/$(OUTNAME).bin
 	@if [ -z "$(SDPHOST)" ]; then echo SDPHOST is not found for this machine; exit 1; fi
-	$(SDPHOST) -u 0x1fc9,$(SDP_$(MCU)_PID) write-file $(SDP_WRITE_ADDR) $<
-	$(SDPHOST) -u 0x1fc9,$(SDP_$(MCU)_PID) jump-address $(SDP_JUMP_ADDR)
+	$(SDPHOST) -v -u 0x1fc9,$(SDP_$(MCU)_PID) write-file $(SDP_WRITE_ADDR) $<
+	$(SDPHOST) -v -u 0x1fc9,$(SDP_$(MCU)_PID) jump-address $(SDP_JUMP_ADDR)
+
+flash-blhost: $(BUILD)/$(OUTNAME).bin
+	@if [ -z "$(BLHOST)" ]; then echo BLPHOST is not found for this machine; exit 1; fi
+	$(BLHOST) -v -u 0x1fc9,$(SDP_$(MCU)_PID) write-memory $(SDP_WRITE_ADDR) $<
+	$(BLHOST) -v -u 0x1fc9,$(SDP_$(MCU)_PID) execute $(SDP_JUMP_ADDR) 0 0
 
 # TODO write-register doesn't work
 erase-app: $(BUILD)/$(OUTNAME).bin
